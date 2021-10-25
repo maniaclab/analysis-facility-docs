@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="None">
+        
+        
+        <link rel="shortcut icon" href="img/favicon.ico">
+        <title>AF Docs</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/font-awesome.min.css" rel="stylesheet">
+        <link href="css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+
+        <script src="js/jquery-1.10.2.min.js" defer></script>
+        <script src="js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body class="homepage">
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href=".">AF Docs</a>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#analysis-facility-docs" class="nav-link">Analysis Facility Docs</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#logging-in-to-the-uchicago-analysis-facility" class="nav-link">Logging in to the UChicago Analysis Facility</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#submitting-to-the-analyis-facility" class="nav-link">Submitting to the Analyis Facility</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#configuring-your-jobs-to-use-an-x509-proxy-certificate" class="nav-link">Configuring your jobs to use an X509 Proxy Certificate</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#using-analysis-facility-filesystems" class="nav-link">Using Analysis Facility Filesystems</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#using-docker-singularity-containers-advanced" class="nav-link">Using Docker / Singularity containers (Advanced)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="analysis-facility-docs">Analysis Facility Docs</h1>
+<h2 id="logging-in-to-the-uchicago-analysis-facility">Logging in to the UChicago Analysis Facility</h2>
+<p>First you will need to sign up on the <a href="https://af.uchicago.edu">Analysis Facility website</a>. </p>
+<p>Please use your institutional or CERN identity (lxplus username) when signing up, as this will make the approval process smoother.</p>
+<p>As part of signing up you will need to upload an SSH Public Key.</p>
+<p>If you are not sure if you have generated an SSH Public Key before, try the following command (Mac/Linux) on your laptop to print the content of the file that contains the SSH Public Key:</p>
+<pre><code>cat ~/.ssh/id_rsa.pub
+</code></pre>
+<p>If the file exists, you should be able to copy the contents of this file to your profile on the AF website. </p>
+<pre><code>Important: Do not copy the contents of a file that does not end in .pub. You must only upload the public (.pub) part of the key.
+</code></pre>
+<p>If you do not have a public key (the file doesn't exist), you can generate one via the following command (Mac/Linux):</p>
+<pre><code>ssh-keygen -t rsa
+</code></pre>
+<p>Upload the resulting public key (ending in .pub) to your profile.</p>
+<p>Once you have uploaded a key, it will take a little bit of time to process your profile and add your account to the system. After 10-15 minutes, you ought to be able to login via SSH:</p>
+<pre><code>ssh &lt;username&gt;@login.af.uchicago.edu
+</code></pre>
+<p>If it does not work, please double check that you have been approved, have a public key uploaded and have waited at least 15 minutes. If you still have an issue, feel free to reach out to us for help.</p>
+<h2 id="submitting-to-the-analyis-facility">Submitting to the Analyis Facility</h2>
+<p>The UChicago Analysis Facility uses HTCondor for batch workloads. You will need to define an executable script and a "submit" file that describes your job. A simple job that loads the ATLAS environment looks something like this:</p>
+<p>Job script, called myjob.sh:</p>
+<pre><code>#!/bin/bash
+export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
+export ALRB_localConfigDir=$HOME/localConfig
+source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh
+# at this point, you can lsetup root, rucio, athena, etc..
+</code></pre>
+<p>Submit file, called myjob.sub:</p>
+<pre><code>Universe = vanilla
+
+Output = myjob.$(Cluster).$(Process).out
+Error = myjob.$(Cluster).$(Process).err
+Log = myjob.log
+
+Executable = myjob.sh
+
+request_memory = 1GB
+request_cpus = 1
+
+Queue 1
+</code></pre>
+<p>The condor_submit command is used to queue jobs:</p>
+<pre><code>$ condor_submit myjob.sub
+Submitting job(s).
+1 job(s) submitted to cluster 17.
+</code></pre>
+<p>And the condor_q command is used to view the queue:</p>
+<pre><code>[lincolnb@login01 ~]$ condor_q
+-- Schedd: head01.af.uchicago.edu : &amp;lt;192.170.240.14:9618?... @ 07/22/21 11:28:26
+OWNER    BATCH_NAME    SUBMITTED   DONE   RUN    IDLE  TOTAL JOB_IDS
+lincolnb ID: 17       7/22 11:27      _      1      _      1 17.0
+
+Total for query: 1 jobs; 0 completed, 0 removed, 0 idle, 1 running, 0 held, 0 suspended
+Total for lincolnb: 1 jobs; 0 completed, 0 removed, 0 idle, 1 running, 0 held, 0 suspended
+Total for all users: 1 jobs; 0 completed, 0 removed, 0 idle, 1 running, 0 held, 0 suspended
+</code></pre>
+<h2 id="configuring-your-jobs-to-use-an-x509-proxy-certificate">Configuring your jobs to use an X509 Proxy Certificate</h2>
+<p>If you need to use an X509 Proxy, e.g. to access ATLAS Data, you will want to copy your X509 certificate to the Analysis Facility.</p>
+<p>Store your certificate in <code>$HOME/.globus</code> and create a ATLAS VOMS proxy in the usual way:</p>
+<pre><code>export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
+export ALRB_localConfigDir=$HOME/localConfig
+source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh
+lsetup emi
+voms-proxy-init -voms atlas -out $HOME/x509proxy
+</code></pre>
+<p>You will want to generate the proxy on, or copy it to, the shared $HOME filesystem so that the HTCondor scheduler can find and read the proxy. With the following additions to your jobscript, HTCondor will configure the job enviroment automatically for X509 authenticated data access:</p>
+<pre><code>use_x509userproxy = true
+x509userproxy = /home/YOURUSERNAME/x509proxy
+</code></pre>
+<p>E.g., in the job above for the user lincolnb:</p>
+<pre><code>Universe = vanilla
+
+Output = myjob.$(Cluster).$(Process).out
+Error = myjob.$(Cluster).$(Process).err
+Log = myjob.log
+
+Executable = myjob.sh
+
+use_x509userproxy = true
+x509userproxy = /home/lincolnb/x509proxy
+
+request_memory = 1GB
+request_cpus = 1
+
+Queue 1
+</code></pre>
+<h2 id="using-analysis-facility-filesystems">Using Analysis Facility Filesystems</h2>
+<p>The UChicago analysis faciltiy has three filesystems that you should be aware of when running workloads. The table below describes their differences:</p>
+<table>
+<thead>
+<tr>
+<th>Filesystem</th>
+<th>Quota</th>
+<th>Path</th>
+<th>Backup</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$HOME</td>
+<td>100 GB</td>
+<td>/home/$USER</td>
+<td>Yes</td>
+<td>Solid-state filesystem, shared to all worker nodes</td>
+</tr>
+<tr>
+<td>$WORK</td>
+<td>10 TB</td>
+<td>/work/$USER</td>
+<td>No</td>
+<td>CephFS filesystem, shared to all worker nodes</td>
+</tr>
+<tr>
+<td>$SCRATCH</td>
+<td>n/a</td>
+<td>/scratch</td>
+<td>No</td>
+<td>Ephemeral storage for workloads, local to worker nodes</td>
+</tr>
+</tbody>
+</table>
+<p>When submitting jobs, you should try to use the local scratch filesystem whenever possible. This will help you be a "good neighbor" to other users on the system, and reduce overall stress on the shared filesystems, which can lead to slowness, downtimes, etc. By default, jobs start in the $SCRATCH directory on the worker nodes. Output data will need to be staged to the shared filesystem or it will be lost!</p>
+<p>In the following example, data is read from Rucio, we pretend to process it, and then push a small output copied back to the $HOME filesystem. It assumes your X509 proxy certificate is valid and in your home directory.</p>
+<pre><code>#!/bin/bash
+export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
+export ALRB_localConfigDir=$HOME/localConfig
+source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh
+lsetup rucio
+rucio --verbose download --rse MWT2_DATADISK data16_13TeV:AOD.11071822._001488.pool.root.1
+
+# You can run things like asetup as well
+asetup AnalysisBase,21.2.81
+
+# This is where you would do your data analysis via AnalysisBase, etc. We will
+# just pretend to do that, and truncate the file to simulate generating an
+# output file. This is definitely not what you want to do in a real analysis!
+cd data16_13TeV
+truncate --size 10MB AOD.11071822._001488.pool.root.1
+cp AOD.11071822._001488.pool.root.1 $HOME/myjob.output
+</code></pre>
+<p>It gets submitted in the usual way:</p>
+<pre><code>Universe = vanilla
+
+Output = myjob.$(Cluster).$(Process).out
+Error = myjob.$(Cluster).$(Process).err
+Log = myjob.log
+
+Executable = myjob.sh
+
+use_x509userproxy = true
+x509userproxy = /home/lincolnb/x509proxy
+
+request_memory = 1GB
+request_cpus = 1
+
+Queue 1
+</code></pre>
+<p>And then:</p>
+<pre><code>$ condor_submit myjob.sub
+Submitting job(s).
+1 job(s) submitted to cluster 17.
+</code></pre>
+<h2 id="using-docker-singularity-containers-advanced">Using Docker / Singularity containers (Advanced)</h2>
+<p>Some users may want to bring their own container-based workloads to the Analysis Facility. We support both Docker-based jobs as well as Singularity-based jobs. Additionally, the CVMFS repository unpacked.cern.ch is mounted on all nodes.</p>
+<p>If, for whatever reason, you wanted to run a Debian Linux-based container on the Analysis Facilty, it would be as simple as the following Job file:</p>
+<pre><code>universe                = docker
+docker_image            = debian
+executable              = /bin/cat
+arguments               = /etc/hosts
+should_transfer_files   = YES
+when_to_transfer_output = ON_EXIT
+output                  = out.$(Process)
+error                   = err.$(Process)
+log                     = log.$(Process)
+request_memory          = 1000M
+queue 1
+</code></pre>
+<p>Similarly, if you would like to run a Singualrity container, such as the ones provided in th unpacked.cern.ch CVMFS repo, you can submit a normal vanilla universe job, with a job executable that looks something like the following:</p>
+<pre><code>#!/bin/bash
+singularity run -B /cvmfs -B /home /cvmfs/unpacked.cern.ch/registry.hub.docker.com/atlas/rucio-clients:default rucio --version
+</code></pre>
+<p>Replacing the <code>rucio-clients:default</code> container and <code>rucio --version</code> executable with your preferred software.</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = ".",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="js/base.js" defer></script>
+        <script src="search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
+
+<!--
+MkDocs version : 1.2.3
+Build Date UTC : 2021-10-25 19:58:14.153350+00:00
+-->
