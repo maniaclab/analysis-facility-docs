@@ -10,7 +10,8 @@ jobs:
         steps:
             - name: Checkout main
               uses: actions/checkout@v1
-
+            - name: Build site
+              run: mkdocs build
             - name: Deploy MkDocs
               uses: mhausenblas/mkdocs-deploy-gh-pages@master
               env:
