@@ -22,11 +22,10 @@ jobs:
               python3 -m pip install mkdocs-material   # install material theme
           - name: Build site
             run: mkdocs build
-          - name: Deploy MkDocs
-            run: mkdocs gh-deploy
-            # uses: mhausenblas/mkdocs-deploy-gh-pages@master
-            # env:
-              # GITHUB_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
-              # CUSTOM_DOMAIN: maniaclab.uchicago.edu
-              # CONFIG_FILE: mkdocs.yml
-              # EXTRA_PACKAGES: build-base
+          - name: Deploy site
+            uses: mhausenblas/mkdocs-deploy-gh-pages@master
+            env:
+              GITHUB_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
+              CUSTOM_DOMAIN: maniaclab.uchicago.edu
+              CONFIG_FILE: mkdocs.yml
+              EXTRA_PACKAGES: build-base
