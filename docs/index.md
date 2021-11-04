@@ -1,4 +1,4 @@
-# Analysis Facility Docs   
+# Getting Started
 
 ## Logging in to the UChicago Analysis Facility
 
