@@ -1,17 +1,17 @@
-name: Deploy site to Github static page
+name: Publish Analysis Facility MKDocs via GitHub Pages
 on:
   push:
     branches: [ main ]
 
 jobs:
     build:
-      name: Deploy docs
-      runs-on: ubuntu-latest
-      steps:
-        - name: Checkout main
-          uses: actions/checkout@v2
+        name: Deploy docs
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout main
+              uses: actions/checkout@v1
 
-        - name: Deploy MkDocs
-          uses: mhausenblas/mkdocs-deploy-gh-pages@master
-          env:
-            GITHUB_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
+            - name: Deploy MkDocs
+              uses: mhausenblas/mkdocs-deploy-gh-pages@1.12
+              env:
+                GITHUB_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
