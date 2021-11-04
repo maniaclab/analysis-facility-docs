@@ -1,3 +1,11 @@
 site_name: Analysis Facility Docs
 theme:
   name: material
+nav:
+  - Home: "index.md"
+  - "Job submission": "job_submission.md"
+  - "Coffea-casa":
+      - "Basics": "coffeacasa.md"
+      - "ServiceX": "servicex.md"
+  - "ML platform": "ml_platform.md"
+  - XCache: "xcache.md"
