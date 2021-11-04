@@ -17,9 +17,9 @@ jobs:
                 architecture: 'x64'
             - name: Install dependencies
               run: |
-                python3 -m pip3 install --upgrade pip     # install pip
-                python3 -m pip3 install mkdocs            # install mkdocs 
-                python3 -m pip3 install mkdocs-material   # install material theme
+                pip3 install --upgrade pip     # install pip
+                pip3 install mkdocs            # install mkdocs 
+                pip3 install mkdocs-material   # install material theme
               - name: Build site
                 run: mkdocs build
               - name: Deploy MkDocs
