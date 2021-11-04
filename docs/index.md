@@ -114,7 +114,7 @@ The UChicago analysis faciltiy has three filesystems that you should be aware of
 | Filesystem | Quota  | Path        | Backup         | Notes                                                  |
 | ---------- | ------ | ----------- | -------------- | ------------------------------------------------------ |
 | $HOME      | 100 GB | /home/$USER | Yes            | Solid-state filesystem, shared to all worker nodes     | 
-| $WORK      | 10 TB  | /work/$USER | No             | CephFS filesystem, shared to all worker nodes          | 
+| $DATA      | 10 TB  | /data/$USER | No             | CephFS filesystem, shared to all worker nodes          | 
 | $SCRATCH   | n/a    | /scratch    | No             | Ephemeral storage for workloads, local to worker nodes |
 
 When submitting jobs, you should try to use the local scratch filesystem whenever possible. This will help you be a "good neighbor" to other users on the system, and reduce overall stress on the shared filesystems, which can lead to slowness, downtimes, etc. By default, jobs start in the $SCRATCH directory on the worker nodes. Output data will need to be staged to the shared filesystem or it will be lost!
