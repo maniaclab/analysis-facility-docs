@@ -1,9 +1,6 @@
 site_name: Analysis Facility Docs
 theme:
   name: material
-  features:
-    - instant
-  include_sidebar: false
 nav:
   - Home: "index.md"
   - "Job submission": "job_submission.md"
