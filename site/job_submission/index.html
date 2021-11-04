@@ -14,7 +14,7 @@
     
     
       
-        <title>Basics - Analysis Facility Docs</title>
+        <title>Job submission - Analysis Facility Docs</title>
       
     
     
@@ -61,7 +61,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#coffea-casa" class="md-skip">
+        <a href="#submitting-to-the-analysis-facility" class="md-skip">
           Skip to content
         </a>
       
@@ -93,7 +93,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Basics
+              Job submission
             
           </span>
         </div>
@@ -193,11 +193,65 @@
 
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../job_submission/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Job submission
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Job submission
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#configuring-your-jobs-to-use-an-x509-proxy-certificate" class="md-nav__link">
+    Configuring your jobs to use an X509 Proxy Certificate
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-analysis-facility-filesystems" class="md-nav__link">
+    Using Analysis Facility Filesystems
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-docker-singularity-containers-advanced" class="md-nav__link">
+    Using Docker / Singularity containers (Advanced)
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -208,14 +262,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
       
       
       
@@ -236,93 +288,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Basics
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../coffeacasa/" class="md-nav__link">
         Basics
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
-    Prerequisites
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#access" class="md-nav__link">
-    Access
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#atlas-authz-authentication-instance" class="md-nav__link">
-    ATLAS AuthZ Authentication Instance
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#docker-image-selection" class="md-nav__link">
-    Docker Image Selection
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cluster-resources-in-coffea-casa-analysis-facility-uchicago" class="md-nav__link">
-    Cluster Resources in Coffea-Casa Analysis Facility @ UChicago
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#opening-a-new-console-or-file" class="md-nav__link">
-    Opening a New Console or File
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#using-git" class="md-nav__link">
-    Using Git
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -404,50 +374,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
-    Prerequisites
+  <a href="#configuring-your-jobs-to-use-an-x509-proxy-certificate" class="md-nav__link">
+    Configuring your jobs to use an X509 Proxy Certificate
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#access" class="md-nav__link">
-    Access
+  <a href="#using-analysis-facility-filesystems" class="md-nav__link">
+    Using Analysis Facility Filesystems
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#atlas-authz-authentication-instance" class="md-nav__link">
-    ATLAS AuthZ Authentication Instance
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#docker-image-selection" class="md-nav__link">
-    Docker Image Selection
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cluster-resources-in-coffea-casa-analysis-facility-uchicago" class="md-nav__link">
-    Cluster Resources in Coffea-Casa Analysis Facility @ UChicago
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#opening-a-new-console-or-file" class="md-nav__link">
-    Opening a New Console or File
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#using-git" class="md-nav__link">
-    Using Git
+  <a href="#using-docker-singularity-containers-advanced" class="md-nav__link">
+    Using Docker / Singularity containers (Advanced)
   </a>
   
 </li>
@@ -465,48 +407,136 @@
               
                 
                 
-                <h1 id="coffea-casa">Coffea Casa</h1>
-<h2 id="prerequisites">Prerequisites</h2>
-<p>The primary mode of analysis with coffea-casa is <a href="https://coffeateam.github.io/coffea/index.html">coffea</a>. Coffea provides plenty of examples to users in its <a href="https://coffeateam.github.io/coffea/examples.html">documentation</a> A good starting point may be <a href="https://github.com/CoffeaTeam/coffea-casa-tutorials/blob/master/analysis/analysis_tutorial.ipynb">this tutorial</a> on columnar analysis in coffea.</p>
-<p>Knowledge of <a href="https://docs.python.org/3/tutorial/">Python</a> is also assumed. Standard coffea analyses are contained within <a href="https://jupyter.org/">Jupyter Notebooks</a>, which allow for dynamic, block-by-block execution of code. Coffea-casa employs the <a href="https://jupyterlab.readthedocs.io/en/stable/user/interface.html">JupyterLab</a> interface. JupyterLab is designed for hosting Jupyter Notebooks on the web, and permits the usage of additional features within its environment, including Git access, compatibility with cluster computing tools, and much, much more.</p>
-<p>If you aren't familiar with any of these tools, please click on the links above for additional resources, and get acquainted with how they work. If you want examples of how coffea-casa merges these tools, refer to the gallery of coffea-casa examples.</p>
-<h2 id="access">Access</h2>
-<p>Please use <a href="https://coffea.af.uchicago.edu">https://coffea.af.uchicago.edu</a> as an access point to the Coffea-Casa Analysis Facility @ UChicago.</p>
-<p><img alt="Access to Coffea-casa Analysis Facility @ UChicago" src="../img/coffea.af.uchicago.edu_hub_login.png" /></p>
-<h2 id="atlas-authz-authentication-instance">ATLAS AuthZ Authentication Instance</h2>
-<p>Currently Coffea-Casa Analysis Facility @ UChicago can support any member of ATLAS.</p>
-<p>Sign in with your ATLAS CERN credential:</p>
-<p><img alt="ATLAS Authz authentification to Coffea-casa Analysis Facility @ UChicago" src="../img/atlas-auth.web.cern.ch_login.png" /></p>
-<p><img alt="Approval required for CMS Authz authentification to Coffea-casa Analysis Facility @ UChicago" src="../img/coffea-casa-authz-approval.png" /></p>
-<h2 id="docker-image-selection">Docker Image Selection</h2>
-<p>For high efficient analysis using <em>coffea</em> package, powered with <em>Dask</em> and <em>HTCondor</em> please select:</p>
-<p><img alt="Coffea Casa analysis image available at Coffea-casa Analysis Facility @ UChicago" src="../img/coffea.af.uchicago.edu_hub_spawn.png" /></p>
-<p>After you will be forwarded to your personal Jupyterhub instance running at Analysis Facility @ UChicago:</p>
-<p><img alt="Jupyterhub instance together with Dask Labextention powered cluster available at Coffea-casa Analysis Facility @ UChicago" src="../img/coffea.af.uchicago.edu_user_fengping.hu.png" /></p>
-<h2 id="cluster-resources-in-coffea-casa-analysis-facility-uchicago">Cluster Resources in Coffea-Casa Analysis Facility @ UChicago</h2>
-<p>By default, the Coffea-casa Dask cluster should provide you with a scheduler and workers, which you can see by clicking on the colored Dask icon in the left sidebar.</p>
-<p><img alt="Default Dask Labextention powered cluster available Coffea-casa Analysis Facility @ UChicago" src="../img/coffea.af.uchicago.edu_user_clusters.png" /></p>
-<p>As soon as you will start your computations, you will notice that available resources at the Coffea-Casa Analysis Facility @ UChicago can easily autoscale depending on available resources in the HTCondor pool at AF UChicago.</p>
-<p><img alt="Autoscaling with Dask Labextention powered cluster available at Coffea-casa Analysis Facility @ UChicago" src="../img/coffea.af.uchicago.edu_user_clusters.scale.png" /></p>
-<h2 id="opening-a-new-console-or-file">Opening a New Console or File</h2>
-<p>There are three ways by which you can open a new tab within coffea-casa. Two are located within the <strong>File</strong> menu at the very top of the JupyterLab interface: <em>New</em> and <em>New Launcher.</em></p>
-<p><img alt="The File menu of the coffea-casa JupyterLab interface." src="../img/coffea-casa-newtab.png" /></p>
-<p>The <em>New</em> dropdown menu allows you to open the console or a file of a specified format directly. The <em>New Launcher</em> option creates a new tab with buttons that permit you to launch a console or a new file, exactly like the interface you are shown when you first open coffea-casa.</p>
-<p>The final way is specific to the <strong>File Browser</strong> tab of the sidebar.</p>
-<p><img alt="The File Browser tab of the coffea-casa JupyterLab interface, showcasing the New Launcher button." src="../img/coffea-casa-newlauncher.png" /></p>
-<p>This behaves exactly like the <em>New Launcher</em> option above.</p>
-<pre><code>Regardless of the method you use to open a new file, the file will be saved to the current directory of your **File Browser.**
+                <h1 id="submitting-to-the-analysis-facility">Submitting to the Analysis Facility</h1>
+<p>The UChicago Analysis Facility uses HTCondor for batch workloads. You will need to define an executable script and a "submit" file that describes your job. A simple job that loads the ATLAS environment looks something like this:</p>
+<p>Job script, called myjob.sh:</p>
+<pre><code>#!/bin/bash
+export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
+export ALRB_localConfigDir=$HOME/localConfig
+source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh
+# at this point, you can lsetup root, rucio, athena, etc..
 </code></pre>
-<h2 id="using-git">Using Git</h2>
-<p>Cloning a repository in the Coffea-casa Analysis Facility @ UChicago is simple, though it can be a little confusing because it is spread across two tabs in the sidebar: the <em>File Browser</em> and the <em>Git</em> tabs.</p>
-<p>In order to clone a repository, first go to the Git tab. It should look like this:</p>
-<p><img alt="The Git tab at Coffea-casa Analysis Facility @ UChicago" src="../img/git.png" /></p>
-<p>Simply click the appropriate button (initialize a repository, or clone a repository) and you'll be hooked up to GitHub. This should then take you to the <em>File Browser</em> tab, which is where you can see all of the repositories you have cloned in your JupyterLab instance. The File Browser should look like this:</p>
-<p><img alt="The File Browser tab at Coffea-casa Analysis Facility @ UChicago" src="../img/browser.png" /></p>
-<p>If you wish to change repositories, simply click the folder button to enter the root directory. If you are in the root directory, the Git tab will reset and allow you to clone another repository.</p>
-<p>If you wish to commit, push, or pull from the repository you currently have active in the File Browser, then you can return to the Git tab. It should change to look like this, so long as you have a repository open in the File Browser:</p>
-<p><img alt="The Git tab at Coffea-casa Analysis Facility @ UChicago, after a repository is activated" src="../img/git2.png" /></p>
-<p>The buttons in the top right allow for pulling and pushing respectively. When you have edited files in a directory, they will show up under the <em>Changed</em> category, at which point you can hit the <strong>+</strong> to add them to a commit (at which point they will show up under <em>Staged</em>). Filling out the box at the bottom of the sidebar will file your commit, and prepare it for you to push.</p>
+<p>Submit file, called myjob.sub:</p>
+<pre><code>Universe = vanilla
+
+Output = myjob.$(Cluster).$(Process).out
+Error = myjob.$(Cluster).$(Process).err
+Log = myjob.log
+
+Executable = myjob.sh
+
+request_memory = 1GB
+request_cpus = 1
+
+Queue 1
+</code></pre>
+<p>The condor_submit command is used to queue jobs:</p>
+<pre><code>$ condor_submit myjob.sub
+Submitting job(s).
+1 job(s) submitted to cluster 17.
+</code></pre>
+<p>And the condor_q command is used to view the queue:</p>
+<pre><code>[lincolnb@login01 ~]$ condor_q
+-- Schedd: head01.af.uchicago.edu : &amp;lt;192.170.240.14:9618?... @ 07/22/21 11:28:26
+OWNER    BATCH_NAME    SUBMITTED   DONE   RUN    IDLE  TOTAL JOB_IDS
+lincolnb ID: 17       7/22 11:27      _      1      _      1 17.0
+
+Total for query: 1 jobs; 0 completed, 0 removed, 0 idle, 1 running, 0 held, 0 suspended
+Total for lincolnb: 1 jobs; 0 completed, 0 removed, 0 idle, 1 running, 0 held, 0 suspended
+Total for all users: 1 jobs; 0 completed, 0 removed, 0 idle, 1 running, 0 held, 0 suspended
+</code></pre>
+<h2 id="configuring-your-jobs-to-use-an-x509-proxy-certificate">Configuring your jobs to use an X509 Proxy Certificate</h2>
+<p>If you need to use an X509 Proxy, e.g. to access ATLAS Data, you will want to copy your X509 certificate to the Analysis Facility.</p>
+<p>Store your certificate in <code>$HOME/.globus</code> and create a ATLAS VOMS proxy in the usual way:</p>
+<pre><code>export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
+export ALRB_localConfigDir=$HOME/localConfig
+source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh
+lsetup emi
+voms-proxy-init -voms atlas -out $HOME/x509proxy
+</code></pre>
+<p>You will want to generate the proxy on, or copy it to, the shared $HOME filesystem so that the HTCondor scheduler can find and read the proxy. With the following additions to your jobscript, HTCondor will configure the job enviroment automatically for X509 authenticated data access:</p>
+<pre><code>use_x509userproxy = true
+x509userproxy = /home/YOURUSERNAME/x509proxy
+</code></pre>
+<p>E.g., in the job above for the user lincolnb:</p>
+<pre><code>Universe = vanilla
+
+Output = myjob.$(Cluster).$(Process).out
+Error = myjob.$(Cluster).$(Process).err
+Log = myjob.log
+
+Executable = myjob.sh
+
+use_x509userproxy = true
+x509userproxy = /home/lincolnb/x509proxy
+
+request_memory = 1GB
+request_cpus = 1
+
+Queue 1
+</code></pre>
+<h2 id="using-analysis-facility-filesystems">Using Analysis Facility Filesystems</h2>
+<p>When submitting jobs, you should try to use the local scratch filesystem whenever possible. This will help you be a "good neighbor" to other users on the system, and reduce overall stress on the shared filesystems, which can lead to slowness, downtimes, etc. By default, jobs start in the $SCRATCH directory on the worker nodes. Output data will need to be staged to the shared filesystem or it will be lost!</p>
+<p>In the following example, data is read from Rucio, we pretend to process it, and then push a small output copied back to the $HOME filesystem. It assumes your X509 proxy certificate is valid and in your home directory.</p>
+<pre><code>#!/bin/bash
+export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
+export ALRB_localConfigDir=$HOME/localConfig
+source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh
+lsetup rucio
+rucio --verbose download --rse MWT2_DATADISK data16_13TeV:AOD.11071822._001488.pool.root.1
+
+# You can run things like asetup as well
+asetup AnalysisBase,21.2.81
+
+# This is where you would do your data analysis via AnalysisBase, etc. We will
+# just pretend to do that, and truncate the file to simulate generating an
+# output file. This is definitely not what you want to do in a real analysis!
+cd data16_13TeV
+truncate --size 10MB AOD.11071822._001488.pool.root.1
+cp AOD.11071822._001488.pool.root.1 $HOME/myjob.output
+</code></pre>
+<p>It gets submitted in the usual way:</p>
+<pre><code>Universe = vanilla
+
+Output = myjob.$(Cluster).$(Process).out
+Error = myjob.$(Cluster).$(Process).err
+Log = myjob.log
+
+Executable = myjob.sh
+
+use_x509userproxy = true
+x509userproxy = /home/lincolnb/x509proxy
+
+request_memory = 1GB
+request_cpus = 1
+
+Queue 1
+</code></pre>
+<p>And then:</p>
+<pre><code>$ condor_submit myjob.sub
+Submitting job(s).
+1 job(s) submitted to cluster 17.
+</code></pre>
+<h2 id="using-docker-singularity-containers-advanced">Using Docker / Singularity containers (Advanced)</h2>
+<p>Some users may want to bring their own container-based workloads to the Analysis Facility. We support both Docker-based jobs as well as Singularity-based jobs. Additionally, the CVMFS repository unpacked.cern.ch is mounted on all nodes.</p>
+<p>If, for whatever reason, you wanted to run a Debian Linux-based container on the Analysis Facilty, it would be as simple as the following Job file:</p>
+<pre><code>universe                = docker
+docker_image            = debian
+executable              = /bin/cat
+arguments               = /etc/hosts
+should_transfer_files   = YES
+when_to_transfer_output = ON_EXIT
+output                  = out.$(Process)
+error                   = err.$(Process)
+log                     = log.$(Process)
+request_memory          = 1000M
+queue 1
+</code></pre>
+<p>Similarly, if you would like to run a Singularity container, such as the ones provided in th unpacked.cern.ch CVMFS repo, you can submit a normal vanilla universe job, with a job executable that looks something like the following:</p>
+<pre><code>#!/bin/bash
+singularity run -B /cvmfs -B /home /cvmfs/unpacked.cern.ch/registry.hub.docker.com/atlas/rucio-clients:default rucio --version
+</code></pre>
+<p>Replacing the <code>rucio-clients:default</code> container and <code>rucio --version</code> executable with your preferred software.</p>
                 
               
               
@@ -526,7 +556,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../job_submission/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Job submission" rel="prev">
+        <a href=".." class="md-footer__link md-footer__link--prev" aria-label="Previous: Home" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -535,20 +565,20 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              Job submission
+              Home
             </div>
           </div>
         </a>
       
       
         
-        <a href="../servicex/" class="md-footer__link md-footer__link--next" aria-label="Next: ServiceX" rel="next">
+        <a href="../coffeacasa/" class="md-footer__link md-footer__link--next" aria-label="Next: Basics" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              ServiceX
+              Basics
             </div>
           </div>
           <div class="md-footer__button md-icon">
