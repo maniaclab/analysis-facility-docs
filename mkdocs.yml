@@ -4,7 +4,7 @@ theme:
 nav:
   - Home: "index.md"
   - "Job submission": "job_submission.md"
-  - "Coffea-casa":
+  - "Coffea Casa":
       - "Basics": "coffeacasa.md"
       - "ServiceX": "servicex.md"
   - "ML platform": "ml_platform.md"
