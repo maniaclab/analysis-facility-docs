@@ -1,4 +1,4 @@
-# Coffea Casa 
+# Coffea Casa
 
 ## Prerequisites
 
@@ -43,13 +43,13 @@ By default, the Coffea-casa Dask cluster should provide you with a scheduler and
 As soon as you will start your computations, you will notice that available resources at the Coffea-Casa Analysis Facility @ UChicago can easily autoscale depending on available resources in the HTCondor pool at AF UChicago.
 
    ![Autoscaling with Dask Labextention powered cluster available at Coffea-casa Analysis Facility @ UChicago](img/coffea.af.uchicago.edu_user_clusters.scale.png)
-   
+
 ## Opening a New Console or File
 
 There are three ways by which you can open a new tab within coffea-casa. Two are located within the **File** menu at the very top of the JupyterLab interface: *New* and *New Launcher.*
 
    ![The File menu of the coffea-casa JupyterLab interface.](img/coffea-casa-newtab.png)
-   
+
 The *New* dropdown menu allows you to open the console or a file of a specified format directly. The *New Launcher* option creates a new tab with buttons that permit you to launch a console or a new file, exactly like the interface you are shown when you first open coffea-casa.
 
 The final way is specific to the **File Browser** tab of the sidebar.
@@ -59,7 +59,6 @@ The final way is specific to the **File Browser** tab of the sidebar.
 This behaves exactly like the *New Launcher* option above.
 
     Regardless of the method you use to open a new file, the file will be saved to the current directory of your **File Browser.**
-
 
 ## Using Git
 
@@ -80,36 +79,3 @@ If you wish to commit, push, or pull from the repository you currently have acti
    ![The Git tab at Coffea-casa Analysis Facility @ UChicago, after a repository is activated](img/git2.png)
 
 The buttons in the top right allow for pulling and pushing respectively. When you have edited files in a directory, they will show up under the *Changed* category, at which point you can hit the **+** to add them to a commit (at which point they will show up under *Staged*). Filling out the box at the bottom of the sidebar will file your commit, and prepare it for you to push.
-
-## ServiceX
-
-When dealing with very large datasets it is often better to do initial data filtering, augmentation using `ServiceX <https://iris-hep.org/projects/servicex>`_.
-ServiceX transformation produces output as an Awkward Array. The array can then be used in a regular Coffea processing.
-Here a scheme explaining the workflow:
-
-   ![ServiceX and Coffea-Casa workflow schema](img/servicex-coffea-workflow.png)
-
-There are two different, UC AF deployed ServiceX instances. The only difference between them is the type of input data they are capable of processing.
-[Uproot](https://uproot-atlas.servicex.af.uchicago.edu/) processes any kind of "flat" ROOT files, while [xAOD](https://xaod.servicex.af.uchicago.edu/) processes only Rucio registered xAOD files.
-
-To use them one has to register and get approved. 
-Sign in will lead you to a Globus registration page, where you may choose to use account connected to your institution:
-
-   ![ServiceX registration](img/servicex-registration.png)
-
-Once approved, you will be able to see status of your requests in the dashboard:
-
-   ![ServiceX dashboard](img/servicex-dashboard.png)
-
-For your code to be able to authenticate your requests, you need to download a servicex.yaml file, that should be placed in your working directory.
-The file is downloaded from your profile page:
-
-   ![ServiceX profile](img/servicex-profile.png)
-
-For an example analysis using ServiceX and Coffea look [here.](https://github.com/iris-hep/analysis-grand-challenge/blob/main/workshops/agctools2021/HZZ_analysis_pipeline/HZZ_analysis_pipeline.ipynb)
-
-## More Examples
-
-Columnar data analysis with DAOD_PHYSLITE [here.](https://github.com/nikoladze/agc-tools-workshop-2021-physlite)
-
-
