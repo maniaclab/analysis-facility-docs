@@ -29,4 +29,4 @@ For an example analysis using ServiceX and Coffea look [here.](https://github.co
 
 Columnar data analysis with DAOD_PHYSLITE [here.](https://github.com/nikoladze/agc-tools-workshop-2021-physlite)
 
-ServiceX analysis on ROOT files, with Coffea, and TRExFitter [] (https://github.com/kyungeonchoi/ServiceX-at-IRIS-HEP-ACG-workshop-2021)
+ServiceX analysis on ROOT files, with Coffea, and TRExFitter [here.](https://github.com/kyungeonchoi/ServiceX-at-IRIS-HEP-ACG-workshop-2021)
